@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2
+alembic
+pydantic
+python-dotenv
+back >= 25.12.0
