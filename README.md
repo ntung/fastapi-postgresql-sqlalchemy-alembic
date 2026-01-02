@@ -1,7 +1,7 @@
 # Rest API with FastAPI, PostgreSQL, SQLAlchemy, and Alembic
 
 ## Overview
-In this tutorial we learn to create REST APIs with fastapi. We are going to use:
+In [this tutorial](https://medium.com/codex/fastapi-crud-with-postgresql-using-sqlalchemy-and-alembic-fa9418fead71) we learn to create REST APIs with fastapi. We are going to use:
 * `FastApi` for creating APIs
 * `PostgreSQL` as a database
 * `SQLAlchemy` as an ORM tool
