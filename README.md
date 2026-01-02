@@ -7,8 +7,15 @@ In [this tutorial](https://medium.com/codex/fastapi-crud-with-postgresql-using-s
 * `SQLAlchemy` as an ORM tool
 * `Alembic` as a database migration tool
 
-## Required libraries and packages
+## Required libraries and packages
 To follow this tutorial you need to install the following packages:
 ```bash
 pip install fastapi uvicorn sqlalchemy psycopg2 alembic pydantic python-dotenv
 ```
+
+## Run
+To run the FastAPI application, use the following command:
+```bash
+uvicorn src.main:app --port=8090 --reload
+```
+or using `start.sh` - the bash wrapper.
