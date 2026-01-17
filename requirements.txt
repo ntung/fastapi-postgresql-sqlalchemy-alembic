@@ -8,3 +8,5 @@ pydantic-settings>=2.12.0
 python-dotenv
 back
 numpy
+python-jose==3.5.0
+passlib>=1.7.4
