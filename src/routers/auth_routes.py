@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 
+from src.config.settings import settings
 from src.database.connection import get_session as get_db
 from src.models.user import User
 from src.schemas.user import (LoginRequest, LogoutResponse, Token, UserCreate,
@@ -12,7 +13,6 @@ from src.services.auth_service import (authenticate_user, blacklist_token,
                                        create_access_token,
                                        get_current_active_user,
                                        get_current_token)
-from src.services.auth_service import settings
 from src.services.user_service import (create_user, get_user_by_email,
                                        get_user_by_username)
 
