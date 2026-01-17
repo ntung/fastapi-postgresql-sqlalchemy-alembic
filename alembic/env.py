@@ -9,8 +9,8 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-from src.database.connection import Base, DATABASE_URL
-# from src.models.book import Book 
+from src.database.connection import DATABASE_URL
+from src.models import Base
 # import other models too
 url_str = DATABASE_URL.replace("%", "%%")
 config.set_main_option('sqlalchemy.url', url_str)

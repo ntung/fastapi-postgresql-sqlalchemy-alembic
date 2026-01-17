@@ -1,6 +1,8 @@
-from src.database.connection import Base
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
+
+from src.models.base import Base
+
 
 class Book(Base):
     __tablename__ = "book"
@@ -12,4 +14,5 @@ class Book(Base):
     rating: Mapped[float] = mapped_column()  # e.g., 4.5
 
     def __repr__(self) -> str:
-        return f"Book(id={self.id}, title={self.title}, author={self.author}, rating={self.rating})"
+        return (f"Book(id={self.id}, title={self.title}, author={self.author}, "
+                f"rating={self.rating})")
