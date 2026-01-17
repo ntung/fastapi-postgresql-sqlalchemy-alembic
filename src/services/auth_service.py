@@ -11,14 +11,30 @@ from src.database.connection import get_session as get_db
 from src.models.user import User, TokenBlacklist
 from src.schemas.user import TokenData
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
 def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+    try:
+        # Ensure password is a string and not too long
+        if not isinstance(password, str):
+            raise ValueError(f"Password must be a string, got {type(password)}")
+
+        password_bytes = password.encode('utf-8')
+        if len(password_bytes) > 72:
+            # Truncate to 72 bytes for bcrypt
+            password_bytes = password_bytes[:72]
+            password = password_bytes.decode('utf-8', errors='ignore')
+
+        return pwd_context.hash(password)
+    except Exception as e:
+        # Add debugging info
+        raise ValueError(f"Error hashing password (length: {len(password) 
+            if isinstance(password, str) else 'N/A'}): {str(e)}")
+
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
